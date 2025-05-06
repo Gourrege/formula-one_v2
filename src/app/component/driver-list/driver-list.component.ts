@@ -13,7 +13,10 @@ import { Driver } from '../../Interface/F1ApiResponse';
 export class DriverListComponent {
 
   driversData: Driver[] = [];
-  show: boolean = false;
+  offset: number = 0;
+  limit: number = 30;
+  year: number = 1950;
+  isLoading: boolean = false;
 
   constructor(private _driverService: DriverService) {}
 
@@ -22,8 +25,15 @@ export class DriverListComponent {
   }
 
   getDrivers() {
-    this._driverService.getDriverDetails().subscribe(response => {
-      this.driversData = response.MRData.DriverTable.Drivers;
+    this.isLoading = true;
+    this._driverService.getDriverDetails(this.offset, this.limit, this.year).subscribe(response => {
+      const newDrivers = response.MRData.DriverTable.Drivers;
+      this.driversData.push(...newDrivers);  // append new batch
+      this.offset = this.offset + 30;  // move to next offset
+      this.isLoading = false;
     });
   }
+
+
+
 }

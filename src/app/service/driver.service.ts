@@ -9,13 +9,15 @@ import {F1ApiResponse} from '../Interface/F1ApiResponse'
 })
 export class DriverService {
 
-  private _siteURL = 'https://api.jolpi.ca/ergast/f1/2025/drivers/';
+  private _baseURL = 'https://api.jolpi.ca/ergast/f1/';
 
   constructor(private _http:HttpClient) {}
 
-  getDriverDetails(): Observable<F1ApiResponse> {
+  getDriverDetails(offset: number, limit: number, year: number): Observable<F1ApiResponse> {
 
-    return this._http.get<F1ApiResponse>(this._siteURL)
+    const url = `${this._baseURL}/${year}/drivers/?offset=${offset}&limit=${limit}`;
+
+    return this._http.get<F1ApiResponse>(url)
       .pipe(
         tap(data => console.log('Driver data received: ' + JSON.stringify(data))),
         catchError(this.handleError)
