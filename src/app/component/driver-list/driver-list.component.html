@@ -1,14 +1,28 @@
 <div class="container py-4">
   <h2>F1 Drivers</h2>
 
+  <input #yearInput type="number" placeholder="Enter year" />
+  <button (click)="onYearSubmit(yearInput.value)">Load Drivers</button>
+
+  
+  <div *ngIf="isLoading">Loading drivers...</div>
+
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let driver of driversData">
+    <li class="list-group-item" *ngFor="let driver of driversData; let i = index">
       <strong>{{ driver.givenName }} {{ driver.familyName }}</strong>
       ({{ driver.nationality }}) -
       <a [href]="driver.url" target="_blank">Wikipedia</a>
-      <p>
-        DOB - {{ driver.dateOfBirth }}
+      <p *ngIf="driver.code" style="margin: 0;">
+        {{ driver.code }}
       </p>
+      <p *ngIf="driver.permanentNumber" style="margin: 0;">
+        {{ driver.permanentNumber }}
+      </p>
+      <button (click)="getWikiSummary(driver.url,driver.driverId)" >Show Summary</button>
+      <p *ngIf="driverCol === driver.driverId" style="margin: 0;">
+        {{ wikiData.extract}}
+      </p>
+      
     </li>
   </ul>
 

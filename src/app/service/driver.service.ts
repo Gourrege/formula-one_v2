@@ -15,7 +15,7 @@ export class DriverService {
 
   getDriverDetails(offset: number, limit: number, year: number): Observable<F1ApiResponse> {
 
-    const url = `${this._baseURL}/${year}/drivers/?offset=${offset}&limit=${limit}`;
+    const url = `${this._baseURL}${year}/drivers/?offset=${offset}&limit=${limit}`;
 
     return this._http.get<F1ApiResponse>(url)
       .pipe(
