@@ -1,0 +1,8 @@
+<h2>F1 Drivers - 2025 Season</h2>
+<ul>
+  <li *ngFor="let driver of driversData">
+    <strong>{{ driver.givenName }} {{ driver.familyName }}</strong>  
+    ({{ driver.nationality }}) - 
+    <a [href]="driver.url" target="_blank">Wikipedia</a>
+  </li>
+</ul>

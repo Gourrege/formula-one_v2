@@ -1,4 +1,4 @@
-export interface ApiResponse {
+export interface F1ApiResponse {
     MRData: MRData;
   }
   
