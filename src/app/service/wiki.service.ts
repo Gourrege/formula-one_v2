@@ -25,3 +25,6 @@ export class WikiService {
     return throwError(() => new Error(err.message));
   }
 }
+
+
+//https://en.wikipedia.org/api/rest_v1/page/summary/Lewis_Hamilton

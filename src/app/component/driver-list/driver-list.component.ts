@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DriverService } from '../../service/driver.service';
 import { Driver } from '../../Interface/F1ApiResponse';
-import { HttpClient} from '@angular/common/http';
 import { WikiApiResponse } from '../../Interface/wiki-api-response';
 import { WikiService } from '../../service/wiki.service';
+
 @Component({
   selector: 'app-driverlist',
   imports: [CommonModule],
@@ -31,7 +31,8 @@ export class DriverListComponent {
     this.driverCol = id;
     this._wikiservice.getWikData(driverUrl).subscribe(response => {
       this.wikiData = response;
-      console.log(response)
+      console.log('Other Data'+response)
+      console.log('Images'+JSON.stringify(response.originalimage.source))
     })
 
     

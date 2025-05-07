@@ -1,4 +1,59 @@
 <div class="container py-4">
+  <h2 class="mb-4">F1 Drivers</h2>
+
+  <div class="input-group mb-3">
+    <input #yearInput type="number" class="form-control" placeholder="Enter year" />
+    <button class="btn btn-outline-primary" (click)="onYearSubmit(yearInput.value)">Load Drivers</button>
+  </div>
+
+  <div *ngIf="isLoading" class="mb-3">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <span class="ms-2">Loading drivers...</span>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let driver of driversData; let i = index">
+      <div class="card h-100">
+        <div class="card-body">
+          <img *ngIf="wikiData?.originalimage?.source && driverCol === driver.driverId" [src] = "wikiData.originalimage.source" class="mt-2" height="200px" width="150px" image = "Driver Image">
+          <h5 class="card-title">
+            {{ driver.givenName }} {{ driver.familyName }}
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{ driver.nationality }}
+          </h6>
+          <p *ngIf="driver.code" class="mb-1">
+            <strong>Code:</strong> {{ driver.code }}
+          </p>
+          <p *ngIf="driver.permanentNumber" class="mb-1">
+            <strong>Number:</strong> {{ driver.permanentNumber }}
+          </p>
+          <a [href]="driver.url" target="_blank" class="card-link">Wikipedia</a><br>
+          <button class="btn btn-sm btn-outline-secondary mt-2" (click)="getWikiSummary(driver.url, driver.driverId)">
+            Show Summary
+          </button>
+          <p *ngIf="driverCol === driver.driverId" class="mt-2">
+            {{ wikiData.extract }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-3">
+    <button class="btn btn-primary" (click)="getDrivers()" [disabled]="isLoading">
+      {{ isLoading ? 'Loading...' : 'Load More' }}
+    </button>
+  </div>
+</div>
+
+
+ 
+<!-- Un-Styled Code -->
+
+<!-- <div class="container py-4">
   <h2>F1 Drivers</h2>
 
   <input #yearInput type="number" placeholder="Enter year" />
@@ -22,7 +77,6 @@
       <p *ngIf="driverCol === driver.driverId" style="margin: 0;">
         {{ wikiData.extract}}
       </p>
-      
     </li>
   </ul>
 
@@ -31,4 +85,4 @@
       {{ isLoading ? 'Loading...' : 'Load More' }}
     </button>
   </div>
-</div>
+</div> -->
