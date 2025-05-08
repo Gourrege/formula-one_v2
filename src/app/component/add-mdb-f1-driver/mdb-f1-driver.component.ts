@@ -10,7 +10,7 @@ import { MongodbService } from '../../service/mongodb.service';
   styleUrl: './mdb-f1-driver.component.css'
 })
 
-export class MDBF1DriverComponent {
+export class AddMDBF1DriverComponent {
 
   f1DriverData: MongoF1Data | any
   show: boolean = false
@@ -24,26 +24,26 @@ export class MDBF1DriverComponent {
   }
 
   getMDB_Drivers() {
-    this._carAPIService.getDetails().subscribe(carsData =>
-      { this.carsData = carsData
+    this._mdbAPIService.getF1DriverDetails().subscribe(f1DriverData =>
+      { this.f1DriverData = f1DriverData
     });
   }
 
-  addCar(make:string, model:string, year:string,imageUrl:string):boolean {
-    let addCar:Car;
-    addCar=new NewCar(make,model,year,imageUrl);
-    this._carAPIService.addCarDetails(addCar).subscribe(carsData =>
-      { this.carsData = carsData}
+  addF1_Driver(firstName:string,lastName:string,Team:string,Number:string,Code:string,imageURL:string):boolean {
+    let addF1Driver:MongoF1Data;
+    addF1Driver= new New_F1_Driver(firstName,lastName,Team,Number,Code,imageURL);
+    this._mdbAPIService.addF1DriverDetails(addF1Driver).subscribe(f1DriverData =>
+      { this.f1DriverData = f1DriverData}
     );
 
-    this.getCars()
+    this.getMDB_Drivers()
 
     return false;
   }
 
-  refreshCars()
+  refreshDrivers()
   {
-    this.getCars();
+    this.getMDB_Drivers();
 
   }
 

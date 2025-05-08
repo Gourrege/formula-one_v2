@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { DriverListComponent } from './component/driver-list/driver-list.component';
 import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [DriverListComponent, CommonModule],
+  imports: [DriverListComponent, CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
