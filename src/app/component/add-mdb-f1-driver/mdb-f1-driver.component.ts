@@ -34,10 +34,13 @@ export class AddMDBF1DriverComponent {
     let addF1Driver:MongoF1Data;
     addF1Driver= new New_F1_Driver(firstName,lastName,Team,Number,Code,imageURL);
     this._mdbAPIService.addF1DriverDetails(addF1Driver).subscribe(f1DriverData =>
-      { this.f1DriversData = f1DriverData}
+      { 
+        this.f1DriversData = f1DriverData
+        this.getMDB_Drivers()
+      }
     );
 
-    this.getMDB_Drivers()
+    
 
     return false;
   }
