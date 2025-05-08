@@ -1,1 +1,31 @@
-<p>mdb-f1-driver works!</p>
+<div class='container mt-3 mb-3'>
+    <button (click)="show = !show">{{show ? 'Hide' : 'Add a Driver'}}</button>
+  
+    <div *ngIf="show">
+      <form>
+        <label>First Name</label>
+        <input type="text" name="firstName" placeholder="Enter First Name" #firstName>
+  
+        <label>Last Name</label>
+        <input type="text" name="lastName" placeholder="Enter Last Name" #lastName>
+  
+        <label>Team</label>
+        <input type="text" name="Team" placeholder="Enter Team" #Team>
+
+        <label>Racing Number</label>
+        <input type="text" name="Number" placeholder="Enter Racing Number" #Number>
+
+        <label>Race Code</label>
+        <input type="text" name="Code" placeholder="Enter Broadcast Code (First 3 letter of Last Name)" #Code>
+  
+        <label>Image</label>
+        <input type="text" name="imageURL" placeholder="Enter Link to Image" #imageURL>
+  
+        <button class="btn btn-primary" type="submit" (click)="addF1_Driver(firstName.value,lastName.value,Team.value,Number.value,Code.value,imageURL.value)">Add F1 Driver</button>
+      </form>
+    </div>
+   </div>
+  
+   <div class='container'>
+      <app-delete-mdb-f1-driver *ngFor="let f1DriverData of f1DriversData" [f1DriverData]="f1DriverData" (driverDeletedEvent)="refreshDrivers()"></app-delete-mdb-f1-driver>
+   </div>

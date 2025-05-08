@@ -15,6 +15,7 @@ export class DeleteMDBF1DriverComponent {
 
   @Input() f1DriverData?:MongoF1Data
   @Output() driverDeletedEvent = new EventEmitter<string>();
+  driverImageWidth:number = 300
 
 
   constructor(private _mdbAPIService:MongodbService)

@@ -1,1 +1,25 @@
-<p>delete-mdb-f1-driver works!</p>
+<div class='container'>
+    <div class='row border-bottom mb-2 '>
+        <div class="col-2">
+            {{f1DriverData?.firstName}} 
+        </div>
+        <div class="col-2">
+            {{f1DriverData?.lastName}}
+        </div>
+        <div class="col-2">
+            {{f1DriverData?.Team}}
+        </div>
+        <div class="col-2">
+            {{f1DriverData?.Number}}
+        </div>
+        <div class="col-2">
+            {{f1DriverData?.Code}}
+        </div>
+        <div class="col-4">
+                <img src="{{f1DriverData?.imageURL}}" [style.width.px]='driverImageWidth' />
+        </div>
+        <div class="col-2">
+            <button class="btn btn-secondary" (click)="deleteDriver(f1DriverData!._id)">Delete</button>
+        </div>
+    </div>
+</div>

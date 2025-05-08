@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MDBF1DriverComponent } from './mdb-f1-driver.component';
+import { AddMDBF1DriverComponent } from './mdb-f1-driver.component';
 
-describe('MDBF1DriverComponent', () => {
-  let component: MDBF1DriverComponent;
-  let fixture: ComponentFixture<MDBF1DriverComponent>;
+describe('AddMDBF1DriverComponent', () => {
+  let component: AddMDBF1DriverComponent;
+  let fixture: ComponentFixture<AddMDBF1DriverComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MDBF1DriverComponent]
+      imports: [AddMDBF1DriverComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MDBF1DriverComponent);
+    fixture = TestBed.createComponent(AddMDBF1DriverComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
