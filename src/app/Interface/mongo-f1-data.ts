@@ -10,7 +10,7 @@ export interface MongoF1Data {
 }
 export class New_F1_Driver implements MongoF1Data
 {
-    _id:string
+    _id!:string
     firstName:string
     lastName:string
     Team:string
@@ -18,9 +18,8 @@ export class New_F1_Driver implements MongoF1Data
     Code:string
     imageURL:string
 
-    constructor(_id:string,firstName:string,lastName:string,Team:string,Number:string,Code:string,imageURL:string)
+    constructor(firstName:string,lastName:string,Team:string,Number:string,Code:string,imageURL:string)
     {
-        this._id=_id
         this.firstName=firstName
         this.lastName=lastName
         this.Team=Team

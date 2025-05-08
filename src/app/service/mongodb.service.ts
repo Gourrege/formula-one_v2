@@ -7,7 +7,7 @@ import { MongoF1Data } from '../Interface/mongo-f1-data';
 @Injectable({
   providedIn: 'root'
 })
-export class CarApiService {
+export class MongodbService {
 
   private _siteURL="http://localhost:5050/f1"
 
