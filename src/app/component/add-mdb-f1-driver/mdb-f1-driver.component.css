@@ -1,0 +1,9 @@
+.text-container {
+  background-color: rgba(26, 117, 255, 0.8);
+}
+.form-label
+{
+    color: white;
+    font-weight: bolder;
+    font-size: large;
+}

@@ -1,51 +1,52 @@
 <div class="container mt-3 mb-3">
-    <button class="btn btn-outline-secondary mb-3" (click)="show = !show">
+    <button class="btn btn-secondary mb-3" (click)="show = !show">
       {{ show ? 'Hide' : 'Add a Driver' }}
     </button>
   
-    <div *ngIf="show" class="container mt-4">
-      <form>
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label for="firstName" class="form-label">First Name</label>
-            <input type="text" name="firstName" id="firstName" placeholder="Enter First Name" #firstName class="form-control">
+    <div class="text-container rounded">
+      <div *ngIf="show" class="container mt-4">
+        <form>
+          <div class="row mb-3">
+            <div class="col-md-6 mt-3">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" name="firstName" id="firstName" placeholder="Enter First Name" #firstName class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" name="lastName" id="lastName" placeholder="Enter Last Name" #lastName class="form-control">
+            </div>
           </div>
-          <div class="col-md-6">
-            <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" name="lastName" id="lastName" placeholder="Enter Last Name" #lastName class="form-control">
+    
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="Team" class="form-label">Team</label>
+              <input type="text" name="Team" id="Team" placeholder="Enter Team" #Team class="form-control">
+            </div>
+            <div class="col-md-4">
+              <label for="Number" class="form-label">Racing Number</label>
+              <input type="text" name="Number" id="Number" placeholder="Enter Racing Number" #Number class="form-control">
+            </div>
+            <div class="col-md-4">
+              <label for="Code" class="form-label">Race Code</label>
+              <input type="text" name="Code" id="Code" placeholder="Enter Broadcast Code (First 3 letters of Last Name)" #Code class="form-control">
+            </div>
           </div>
-        </div>
+    
+          <div class="mb-3">
+            <label for="imageURL" class="form-label">Image</label>
+            <input type="text" name="imageURL" id="imageURL" placeholder="Enter Link to Image" #imageURL class="form-control">
+          </div>
+    
+          <div class="text-center">
+            <button class="btn btn-secondary mb-2" type="submit" 
+              (click)="addF1_Driver(firstName.value, lastName.value, Team.value, Number.value, Code.value, imageURL.value)">
+              Add F1 Driver
+            </button>
+          </div>
+        </form>
+      </div>
+</div>
   
-        <div class="row mb-3">
-          <div class="col-md-4">
-            <label for="Team" class="form-label">Team</label>
-            <input type="text" name="Team" id="Team" placeholder="Enter Team" #Team class="form-control">
-          </div>
-          <div class="col-md-4">
-            <label for="Number" class="form-label">Racing Number</label>
-            <input type="text" name="Number" id="Number" placeholder="Enter Racing Number" #Number class="form-control">
-          </div>
-          <div class="col-md-4">
-            <label for="Code" class="form-label">Race Code</label>
-            <input type="text" name="Code" id="Code" placeholder="Enter Broadcast Code (First 3 letters of Last Name)" #Code class="form-control">
-          </div>
-        </div>
-  
-        <div class="mb-3">
-          <label for="imageURL" class="form-label">Image</label>
-          <input type="text" name="imageURL" id="imageURL" placeholder="Enter Link to Image" #imageURL class="form-control">
-        </div>
-  
-        <div class="text-center">
-          <button class="btn btn-primary" type="submit" 
-            (click)="addF1_Driver(firstName.value, lastName.value, Team.value, Number.value, Code.value, imageURL.value)">
-            Add F1 Driver
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-  
-   <div class='container'>
-      <app-delete-mdb-f1-driver *ngFor="let f1DriverData of f1DriversData" [f1DriverData]="f1DriverData" (driverDeletedEvent)="refreshDrivers()"></app-delete-mdb-f1-driver>
-   </div>
+<div class='container'>
+  <app-delete-mdb-f1-driver *ngFor="let f1DriverData of f1DriversData" [f1DriverData]="f1DriverData" (driverDeletedEvent)="refreshDrivers()"></app-delete-mdb-f1-driver>
+</div>
