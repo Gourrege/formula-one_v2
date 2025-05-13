@@ -3,13 +3,15 @@ import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError,tap } from 'rxjs';
 import { MongoF1Data } from '../Interface/mongo-f1-data';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MongodbService {
 
-  private _siteURL="http://localhost:5050/f1"
+  // private _siteURL="http://localhost:5050/f1"
+  private _siteURL= environment.apiURL
 
   constructor(private _http:HttpClient) 
   {

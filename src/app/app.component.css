@@ -7,3 +7,9 @@
   border-radius: 10px; /* Optional, for rounded corners */
   display: inline-block; /* Keeps the box around the text */
 }
+.img-container img {
+  max-width: 60%;
+  height: auto;
+  display: block;
+  
+}
